@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Free Texas</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		
+		<div class="jumbotron" style="background-color: #337ab7; color: white; margin-bottom: 0;">
+        	<h1 class="text-center">Free Texas</h1>
+        	<h3 class="text-center">Your guide to free stuff in Texas.</h3>
+      	</div>
+		
+		<div class="row">
+			<div class="col-lg-8" style="margin: 10px 0;">
+				<a class="btn btn-lg btn-warning" href="#" role="button">Austin</a>		
+				<a class="btn btn-lg btn-success" href="#" role="button">Dallas</a>
+				<a class="btn btn-lg btn-danger" href="#" role="button">Houston</a>
+				<a class="btn btn-lg btn-info" href="#" role="button">San Antonio</a>
+			</div>
+
+			<div class="col-lg-4" style="margin: 10px 0;">
+				<form class="text-center" action="/action_page.php">
+					Date:
+					<input type="date" name="eventDate">
+					<input type="submit">
+				</form>
+			</div>
+
+
+		</div>
+      	
+      	<div class="row">
+      	
+	      	<div class="col-lg-12">
+
+	        <!-- Current Events-->
+	          	<div class="panel panel-primary">
+		            <div class="panel-heading">
+		              <h3 class="panel-title"><strong>Events</strong></h3>
+		            </div>
+		            <div class="panel-body">
+		              	<table class="table table-hover" id='data-table'>
+			                <thead>
+			                  <tr>
+			                    <th>Date</th>
+			                    <th>Info</th>
+			                    <th>Food</th>
+			                    <th>Drink</th>
+			                    <th>Weather</th>
+			                  </tr>
+			                </thead>
+			                <tbody>
+			                </tbody>
+		              	</table>
+		            </div>
+	          	</div>
+	      	</div>
+		</div>
+	</div>
+
+</body>
+</html>
