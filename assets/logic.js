@@ -2,7 +2,7 @@ $(document).ready(function() {
 
     var APIKey = "VJQ763OD7ITTFKU7NOG4";
 
-    var queryURL = "https://www.eventbriteapi.com/v3/events/search/?q=Austin&price=freetoken=" + APIKey;
+    var queryURL = "https://www.eventbriteapi.com/v3/events/search/?q=Austin&price=free&token=" + APIKey;
 
 
     // We then created an AJAX call
