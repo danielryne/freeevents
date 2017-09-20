@@ -8,37 +8,47 @@
 
 <body>
   <!-- Retrieved data will be dumped here -->
-  <div class="events"></div>
-
+  <div class="events">
+    <input type="text" id="searchTerm">
+    <input type="submit" id="searchButton">
+  </div>
+  
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript">
     // This is our API key. Add your own API key between the ""
     var APIKey = "VJQ763OD7ITTFKU7NOG4";
 
+
     // Here we are building the URL we need to query the database
-    var queryURL = "https://www.eventbriteapi.com/v3/events/search/?token=" + APIKey;
+    $("#searchButton").click(function (event) { 
+    event.preventDefault();     
+    var searchTerm = $("#searchTerm").val().trim();
+      var queryURL = "https://www.eventbriteapi.com/v3/events/search/?q=" + searchTerm + "&token=" + APIKey;
+    
 
-    // We then created an AJAX call
-    $.ajax({
-      url: queryURL,
-      method: "GET"
-    }).done(function(response) {
+      // We then created an AJAX call
+      $.ajax({
+        url: queryURL,
+        method: "GET"
+      }).done(function(response) {
 
-      // Create CODE HERE to Log the queryURL
-      console.log(queryURL);
+        // Create CODE HERE to Log the queryURL
+        console.log(queryURL);
 
-      // Create CODE HERE to log the resulting object
-      console.log(response);
+        // Create CODE HERE to log the resulting object
+        console.log(response);
 
-      // Create CODE HERE to transfer content to HTML
-      $("events").html("");
+        // Create CODE HERE to transfer content to HTML
+        $("events").html("");
 
 
 
-      // Create CODE HERE to dump the temperature content into HTML
+        // Create CODE HERE to dump the temperature content into HTML
 
+      });
     });
+
   </script>
 </body>
 
