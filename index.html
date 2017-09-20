@@ -1,65 +1,58 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>Free Texas</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>Free Texas</title>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+     <link rel="stylesheet" href="assets/style.css">
 </head>
+
 <body>
-	<div class="container">
-		
-		<div class="jumbotron" style="background-color: #337ab7; color: white; margin-bottom: 0;">
-        	<h1 class="text-center">Free Texas</h1>
-        	<h3 class="text-center">Your guide to free stuff in Texas.</h3>
-      	</div>
-		
-		<div class="row">
-			<div class="col-lg-8" style="margin: 10px 0;">
-				<a class="btn btn-lg btn-warning" href="#" role="button">Austin</a>		
-				<a class="btn btn-lg btn-success" href="#" role="button">Dallas</a>
-				<a class="btn btn-lg btn-danger" href="#" role="button">Houston</a>
-				<a class="btn btn-lg btn-info" href="#" role="button">San Antonio</a>
-			</div>
-
-			<div class="col-lg-4" style="margin: 10px 0;">
-				<form class="text-center" action="/action_page.php">
-					Date:
-					<input type="date" name="eventDate">
-					<input type="submit">
-				</form>
-			</div>
-
-
-		</div>
-      	
-      	<div class="row">
-      	
-	      	<div class="col-lg-12">
-
-	        <!-- Current Events-->
-	          	<div class="panel panel-primary">
-		            <div class="panel-heading">
-		              <h3 class="panel-title"><strong>Events</strong></h3>
-		            </div>
-		            <div class="panel-body">
-		              	<table class="table table-hover" id='data-table'>
-			                <thead>
-			                  <tr>
-			                    <th>Date</th>
-			                    <th>Info</th>
-			                    <th>Food</th>
-			                    <th>Drink</th>
-			                    <th>Weather</th>
-			                  </tr>
-			                </thead>
-			                <tbody>
-			                </tbody>
-		              	</table>
+    <div class="container">
+        <div class="bg-primary container card border border-primary round">
+        	<div class="alignVertical">
+	            <h1 class="text-center text-white">Free Texas</h1>
+	            <h3 class="text-center text-white">Your guide to free stuff in Texas.</h3>
+        	</div>
+        </div>
+        <br>
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <a class="btn btn-lg btn-warning" href="#" role="button">Austin</a>
+                <a class="btn btn-lg btn-success" href="#" role="button">Dallas</a>
+                <a class="btn btn-lg btn-danger" href="#" role="button">Houston</a>
+                <a class="btn btn-lg btn-info" href="#" role="button">San Antonio</a>
+            </div>
+            <div class="col-lg-4">
+                <form class="text-center" action="/action_page.php">
+                    Date:
+                    <input type="date" name="eventDate">
+                    <input type="submit">
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- Current Events-->
+                <div class="card card-primary">
+                    <div class="card-heading">
+                        <h3 class="card-header bg-primary text-white"><strong>Events</strong></h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="container card-body" id="currentTrainList">
+				            <div class=" row ">
+				                <div class="col-3 "><strong>Train Name</strong></div>
+				                <div class="col-3 "><strong>Destination</strong></div>
+				                <div class="col-2 "><strong>Frequency (min)</strong></div>
+				                <div class="col-2 "><strong>Next Arrival</strong></div>
+				                <div class="col-2 "><strong>Minutes Away</strong></div>
+				            </div>
 		            </div>
 	          	</div>
 	      	</div>
 		</div>
 	</div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src= "assets/logic.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js "></script>
+	<script src= "assets/logic.js "></script>
 </body>
 </html>

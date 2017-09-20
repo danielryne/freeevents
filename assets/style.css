@@ -1,0 +1,13 @@
+.titleBox {
+	height: 200px;
+	line-height: 200px;
+	padding: 0px;
+	margin: 0px
+}
+.no-padding {
+	padding: 0
+}
+.alignVertical {
+	margin: 0px;
+	padding: 5% 0px
+}
