@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    $("input").click(eventsInAustin);
+    $("#submit").click(eventsInAustin);
     //This is our city
     function eventsInAustin(event) {
         event.preventDefault();
