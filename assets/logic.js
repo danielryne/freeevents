@@ -25,24 +25,54 @@ $(document).ready(function() {
             // Create CODE HERE to Log the queryURL
             console.log(queryURL);
 
+    //-------------------------------------------------------------------- 
+            // Forrest's For Loop code
+
+            for (var i = 0; i < 10; i++) {
+                
+                // Variables for what we get
+                var nameEvent = response.events[i].name.text;
+                var urlEvent = response.events[i].url;
+                var timeEvent = response.events[i].start.local;
+
+                // Clean URL (something setting urlEvent to nameEvent)
+                var cleanUrl =
+
+                // Need to seperate the timeEvent into date and time using moment
+
+                console.log(nameEvent);
+                console.log(timeEvent);
+                console.log(urlEvent);
+
+                $("#eventList").append(
+                    "<tr><td>"
+                        + timeEvent +
+                    "</td><td>"
+                        + urlEvent +
+                    "</td><td>"
+                        + nameEvent +
+                    "</td>")
+            }
+
+    //--------------------------------------------------------------------
             // Create CODE HERE to log the resulting object
             console.log(response);
 
-            for (var i = 0; i < response.length; i++) {
+            // for (var i = 0; i < response.length; i++) {
 
-                var datePath = "test";
-                var timePath = "test";
-                var namePath = "test";
+            //     var datePath = "test";
+            //     var timePath = "test";
+            //     var namePath = "test";
 
-                $("#eventList").append(
-                    '<hr>' +
-                    '<div class=" row ">' +
-                      '<div class="col-4 ">' + datePath + '</div>' +
-                      '<div class="col-4 ">' + timePath + '</div>' +
-                      '<div class="col-4 ">' + namePath + '</div>' +
-                    '</div>'
-                );
-            }
+            //     $("#eventList").append(
+            //         '<hr>' +
+            //         '<div class=" row ">' +
+            //           '<div class="col-4 ">' + datePath + '</div>' +
+            //           '<div class="col-4 ">' + timePath + '</div>' +
+            //           '<div class="col-4 ">' + namePath + '</div>' +
+            //         '</div>'
+            //     );
+            // }
         })
     };
 });
