@@ -18,10 +18,10 @@
         <br>
         <div class="row align-items-center">
             <div class="col-lg-8">
-                <input class="btn btn-sm btn-warning" value="Austin" role="button">
-                <input class="btn btn-sm btn-success" value="Dallas" role="button">
-                <input class="btn btn-sm btn-danger" value="Houston" role="button">
-                <input class="btn btn-sm btn-info" value="San Antonio" role="button">
+                <a class="btn btn-sm btn-warning" value="austin" role="button">Austin</a>
+                <a class="btn btn-sm btn-success" value="dallas" role="button">Dallas</a>
+                <a class="btn btn-sm btn-danger" value="houston" role="button">Houston</a>
+                <a class="btn btn-sm btn-info" value="san antonio" role="button">San Antonio</a>
             </div>
             <div class="col-lg-4">
                 <form class="text-center" action="/action_page.php">
@@ -39,13 +39,13 @@
                         <h3 class="card-header bg-primary text-white"><strong>Events</strong></h3>
                     </div>
                     <div class="">
-                        <div class="container card-body" id="eventList">
-                            <div class=" row ">
-                                <div class="col-4 "><strong>Date</strong></div>
-                                <div class="col-4 "><strong>Time</strong></div>
-                                <div class="col-4 "><strong>Name</strong></div>
-                            </div>
-                        </div>
+                        <table class="container card-body" id="eventList">
+                            <tr class=" row ">
+                                <th class="col-4 "><strong>Date</strong></th>
+                                <th class="col-4 "><strong>Time</strong></th>
+                                <th class="col-4 "><strong>Name</strong></th>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </div>

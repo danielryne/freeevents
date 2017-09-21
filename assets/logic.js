@@ -37,9 +37,9 @@ $(document).ready(function() {
                 $("#eventList").append(
                     '<hr>' +
                     '<div class=" row ">' +
-                    '<div class="col-4 ">' + datePath + '</div>' +
-                    '<div class="col-4 ">' + timePath + '</div>' +
-                    '<div class="col-4 ">' + namePath + '</div>' +
+                      '<div class="col-4 ">' + datePath + '</div>' +
+                      '<div class="col-4 ">' + timePath + '</div>' +
+                      '<div class="col-4 ">' + namePath + '</div>' +
                     '</div>'
                 );
             }
