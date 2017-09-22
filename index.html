@@ -5,6 +5,8 @@
     <title>Free Texas</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/style.css">
+    <script src="https://cdn.jsdelivr.net/momentjs/2.18.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js "></script>
 </head>
 
 <body>
@@ -21,12 +23,12 @@
                 <a class="btn btn-sm btn-warning" value="austin" role="button">Austin</a>
                 <a class="btn btn-sm btn-success" value="dallas" role="button">Dallas</a>
                 <a class="btn btn-sm btn-danger" value="houston" role="button">Houston</a>
-                <a class="btn btn-sm btn-info" value="san antonio" role="button">San Antonio</a>
+                <a class="btn btn-sm btn-info" value="sanantonio" role="button">San Antonio</a>
             </div>
             <div class="col-lg-4">
                 <form class="text-center" action="/action_page.php">
                     Date:
-                    <input type="date" name="eventDate">
+                    <input type="date" name="eventDate" id="startDate">
                     <input type="submit" id="submit">
                 </form>
             </div>
@@ -52,8 +54,7 @@
                 </div>
             </div>
         </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js "></script>
-        <script src="assets/logic.js "></script>
+    <script src="assets/logic.js "></script>
 </body>
 
 </html>
