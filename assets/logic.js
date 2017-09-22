@@ -42,6 +42,7 @@ $(document).ready(function() {
                 var nameEvent = response.events[i].name.text;
                 var urlEvent = response.events[i].url;
                 var timeEvent = response.events[i].start.local;
+                var descriptionEvent = response.events[i].description.text
 
                 var date = moment(timeEvent).format("MMM Do YYYY");
                 var time = moment(timeEvent).format("h:mm a");
@@ -50,13 +51,14 @@ $(document).ready(function() {
                 var cleanUrl =
 
                     // Need to seperate the timeEvent into date and time using moment
+                    // <a href="#" data-toggle="tooltip" title="Hooray!">Hover over me</a>
 
                 $("#eventList").append(
                     '<tr><td>' +
                     date +
                     '</td><td>' +
                     time +
-                    '</td><td><a target="-blank" href="' + urlEvent + '">' +
+                    '</td><td><a target="-blank" href="' + urlEvent + '" data-toggle="tooltip" title="' + descriptionEvent + '">' +
                     nameEvent +
                     '</a></td>')
             }
