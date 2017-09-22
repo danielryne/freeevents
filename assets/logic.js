@@ -1,12 +1,12 @@
 $(document).ready(function() {
 
-    $("#submit").click(eventsInAustin);
+    $("button").click(eventsInAustin);
     //This is our city
     function eventsInAustin(event) {
         event.preventDefault();
         console.log("Clicked");
 
-        city = "Austin";
+        var city = $(this).val();
         var properTimeFormat = "YYYY-MM-DDTHH:MM:ss";
         startDate = moment($("#startDate").val()).format(properTimeFormat); // 2017-09-23T00:00:00-05:00
         endDate = moment($("#startDate").val()).add(1, "day").format(properTimeFormat); // day after the start day
@@ -42,7 +42,7 @@ $(document).ready(function() {
                 var timeEvent = response.events[i].start.local;
 
                 var date = moment(timeEvent).format("MMM Do YYYY");
-                var time = moment(timeEvent).format("h:mm:ss a");
+                var time = moment(timeEvent).format("h:mm a");
 
                 // Clean URL (something setting urlEvent to nameEvent)
                 var cleanUrl =
