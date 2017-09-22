@@ -17,7 +17,7 @@ $(document).ready(function() {
         var APIKey = "VJQ763OD7ITTFKU7NOG4";
 
         // Here we are building the URL we need to query the database
-        var queryURL = "https://www.eventbriteapi.com/v3/events/search/?categories=110,103&price=free&location.address=" + city + "&" + "start_date.range_start=" + startDate + "Z&start_date.range_end=" + endDate + "Z&token=" + APIKey;
+        var queryURL = "https://www.eventbriteapi.com/v3/events/search/?sort_by=date&categories=110,103&price=free&location.address=" + city + "&" + "start_date.range_start=" + startDate + "Z&start_date.range_end=" + endDate + "Z&token=" + APIKey;
 
         // We then created an AJAX call
         $.ajax({
@@ -34,6 +34,8 @@ $(document).ready(function() {
             //tells us the length of event objects 
             eventslength = response.events.length;
 
+            $("#eventList").empty();
+
             for (var i = 0; i < eventslength; i++) {
 
                 // Variables for what we get
@@ -49,7 +51,7 @@ $(document).ready(function() {
 
                     // Need to seperate the timeEvent into date and time using moment
 
-                $("#eventList").prepend(
+                $("#eventList").append(
                     '<tr><td>' +
                     date +
                     '</td><td>' +
