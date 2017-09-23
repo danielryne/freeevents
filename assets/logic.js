@@ -28,6 +28,7 @@ $(document).ready(function() {
             // Create CODE HERE to Log the queryURL
             console.log(queryURL);
 
+
             //tells us the length of event objects 
             eventslength = response.events.length;
 
