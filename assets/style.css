@@ -4,10 +4,40 @@
 	padding: 0px;
 	margin: 0px
 }
+
 .no-padding {
 	padding: 0
 }
+
 .alignVertical {
 	margin: 0px;
 	padding: 5% 0px
+}
+
+.section {
+	background-size: cover;
+}
+
+#section0 {
+	background-image: url(http://s4solutions.org/wp-content/uploads/2016/08/events-management-3.jpg);
+	/*background-image: url(http://eventfly.info/wp-content/uploads/2017/03/3442e85750214622f0dbad9d955e022e.jpg);*/
+}
+
+#section3 {
+	padding: 6% 0 0 0;
+}
+
+body {
+	font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+	font-size: 80px;
+	font-weight: bold;
+	color: white;
+}
+
+h3 {
+	font-size: 44px;
+	color: white;
 }
