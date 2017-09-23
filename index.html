@@ -5,6 +5,8 @@
     <title>Free Texas</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/style.css">
+    <script src="https://cdn.jsdelivr.net/momentjs/2.18.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js "></script>
 </head>
 
 <body>
@@ -18,16 +20,15 @@
         <br>
         <div class="row align-items-center">
             <div class="col-lg-8">
-                <a class="btn btn-sm btn-warning" value="austin" role="button">Austin</a>
-                <a class="btn btn-sm btn-success" value="dallas" role="button">Dallas</a>
-                <a class="btn btn-sm btn-danger" value="houston" role="button">Houston</a>
-                <a class="btn btn-sm btn-info" value="san antonio" role="button">San Antonio</a>
+                <button class="btn btn-md btn-warning" value="Austin" role="button">Austin</button>
+                <button class="btn btn-md btn-success" value="Dallas" role="button">Dallas</button>
+                <button class="btn btn-md btn-danger" value="Houston" role="button">Houson</button>
+                <button class="btn btn-md btn-info" value="SanAntonio" role="button">San Antonio</button>
             </div>
             <div class="col-lg-4">
                 <form class="text-center" action="/action_page.php">
                     Date:
-                    <input type="date" name="eventDate">
-                    <input id="submit" type="submit">
+                    <input type="date" name="eventDate" id="startDate">
                 </form>
             </div>
         </div>
@@ -39,7 +40,7 @@
                         <h3 class="card-header bg-primary text-white"><strong>Events</strong></h3>
                     </div>
                     <div class="">
-                        <table class="container card-body" id="eventList">
+                        <table class="container card-body">
                             <thead>
                                 <tr>
                                     <th><strong>Date</strong></th>
@@ -47,13 +48,13 @@
                                     <th><strong>Name</strong></th>
                                 </tr>
                             </thead>
+                            <tbody id="eventList"></tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js "></script>
-        <script src="assets/logic.js "></script>
+    <script src="assets/logic.js "></script>
 </body>
 
 </html>
