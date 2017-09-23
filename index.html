@@ -1,60 +1,83 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <title>Free Texas</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/style.css">
-    <script src="https://cdn.jsdelivr.net/momentjs/2.18.1/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js "></script>
-</head>
+    <title>Full Page Trail</title>
+    
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
+    <!-- Moment -->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.18.1/moment.min.js"></script>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" type="text/css" href="./assets/jquery.fullpage.css">
+    <link rel="stylesheet" type="text/css" href="./assets/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+</head>
 <body>
-    <div class="container">
-        <div class="bg-primary container card border border-primary round">
-            <div class="alignVertical">
-                <h1 class="text-center text-white">Free Texas</h1>
-                <h3 class="text-center text-white">Your guide to free stuff in Texas.</h3>
-            </div>
+    <!-- Sample HTMl -->
+    <div id="fullpage">
+        
+        <!-- Section 1 -->
+        <div class="section text-center" id="section0">
+            <h1>Free Texas</h1>
+            <h3>Transition your day towards fun, without the cost</h3>
         </div>
-        <br>
-        <div class="row align-items-center">
-            <div class="col-lg-8">
+        
+        <!-- Section 2 -->
+        <div class="section text-center">
+            <form action="/action_page.php">
+                Select the date you want to go out: <br>
+                <input type="date" name="eventDate" id="startDate">
+            </form>
+        </div>
+        
+        <!-- Section 3 -->
+        <div class="section text-center">
+            <p>Select the city you want to go out in:</p>
                 <button class="btn btn-md btn-warning" value="Austin" role="button">Austin</button>
                 <button class="btn btn-md btn-success" value="Dallas" role="button">Dallas</button>
                 <button class="btn btn-md btn-danger" value="Houston" role="button">Houson</button>
                 <button class="btn btn-md btn-info" value="SanAntonio" role="button">San Antonio</button>
-            </div>
-            <div class="col-lg-4">
-                <form class="text-center" action="/action_page.php">
-                    Date:
-                    <input type="date" name="eventDate" id="startDate">
-                </form>
-            </div>
         </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <!-- Current Events-->
-                <div class="card card-primary">
-                    <div class="card-heading">
-                        <h3 class="card-header bg-primary text-white"><strong>Events</strong></h3>
-                    </div>
-                    <div class="">
-                        <table class="container card-body">
-                            <thead>
-                                <tr>
-                                    <th><strong>Date</strong></th>
-                                    <th><strong>Time</strong></th>
-                                    <th><strong>Name</strong></th>
-                                </tr>
-                            </thead>
-                            <tbody id="eventList"></tbody>
-                        </table>
-                    </div>
+        
+        <!-- Section 4 -->
+        <div class="section">
+            <div class="card card-primary">
+                <div class="card-heading">
+                    <h3 class="card-header bg-primary text-white"><strong>Events</strong></h3>
+                </div>
+                <div class="">
+                    <table class="container card-body" style="height: 383px;"">
+                        <thead>
+                            <tr>
+                                <th><strong>Date</strong></th>
+                                <th><strong>Time</strong></th>
+                                <th><strong>Weather</strong></th>
+                                <th><strong>Name</strong></th>
+                            </tr>
+                        </thead>
+                        <tbody id="eventList"></tbody>
+                    </table>
                 </div>
             </div>
         </div>
-    <script src="assets/logic.js "></script>
-</body>
+        
+    </div>
 
+    <!-- Scripts for fullPage -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="./assets/jquery.fullpage.js"></script>
+    <script type="text/javascript" src="./assets/logic.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#fullpage').fullpage({
+                sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', 'whitesmoke', '#ccddff'],
+                anchors: ['firstPage', 'secondPage', '3rdPage', '4thpage', 'lastPage'],
+                menu: '#menu',
+                scrollingSpeed: 1000
+            });
+        });
+    </script>
+</body>
 </html>

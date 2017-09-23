@@ -28,8 +28,6 @@ $(document).ready(function() {
             // Create CODE HERE to Log the queryURL
             console.log(queryURL);
 
-            //-------------------------------------------------------------------- 
-            // Forrest's For Loop code
 
             //tells us the length of event objects 
             eventslength = response.events.length;
@@ -44,45 +42,22 @@ $(document).ready(function() {
                 var timeEvent = response.events[i].start.local;
                 var descriptionEvent = response.events[i].description.text
 
-                var date = moment(timeEvent).format("MMM Do YYYY");
+                var date = moment(timeEvent).format("MMM Do");
                 var time = moment(timeEvent).format("h:mm a");
 
-                // Clean URL (something setting urlEvent to nameEvent)
-                var cleanUrl =
-
-                    // Need to seperate the timeEvent into date and time using moment
-                    // <a href="#" data-toggle="tooltip" title="Hooray!">Hover over me</a>
+                var weather = "<img id='weatherIcon' src='https://icons.wxug.com/i/c/a/partlycloudy.gif'>"
 
                 $("#eventList").append(
-                    '<tr><td>' +
-                    date +
-                    '</td><td>' +
-                    time +
+                    '<tr><td>' + date +
+                    '</td><td>' + time + 
+                    '</td><td>' + weather +
                     '</td><td><a target="-blank" href="' + urlEvent + '" data-toggle="tooltip" title="' + descriptionEvent + '">' +
                     nameEvent +
                     '</a></td>')
             }
 
-
-            //--------------------------------------------------------------------
-            // Create CODE HERE to log the resulting object
             console.log(response);
-
-            // for (var i = 0; i < response.length; i++) {
-
-            //     var datePath = "test";
-            //     var timePath = "test";
-            //     var namePath = "test";
-
-            //     $("#eventList").append(
-            //         '<hr>' +
-            //         '<div class=" row ">' +
-            //           '<div class="col-4 ">' + datePath + '</div>' +
-            //           '<div class="col-4 ">' + timePath + '</div>' +
-            //           '<div class="col-4 ">' + namePath + '</div>' +
-            //         '</div>'
-            //     );
-            // }
+           
         })
     };
 });
