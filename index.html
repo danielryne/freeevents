@@ -21,7 +21,7 @@
 
 </head>
 <body>
-    <!-- Sample HTMl -->
+    <!-- Main HTML -->
     <div id="fullpage">
         
         <!-- Section 1 -->
@@ -48,12 +48,14 @@
         </div>
         
         <!-- Section 4 -->
-        <div class="section">
+        <div class="section" id="section3">
             <div class="card card-primary">
                 <div class="card-heading">
-                    <h3 class="card-header bg-primary text-white"><strong>Events</strong></h3>
+                    <h3 class="card-header bg-primary text-center text-white">
+                        <strong>Events</strong>
+                    </h3>
                 </div>
-                <div class="">
+                <div class="scrollDiv">
                     <table class="container card-body" style="height: 383px;"">
                         <thead>
                             <tr>
@@ -71,19 +73,52 @@
         
     </div>
 
+    <!-- Nav dots on right -->
+    <div id="fp-nav" class="right" style="margin-top: -33.5px;">
+        <ul>
+            <li>
+                <a href="#1stPage" class="">
+                    <span></span>
+                </a>
+                <div class="fp-tooltip right">Title</div>
+            </li>
+            <li>
+                <a href="#2ndPage" class="">
+                    <span></span>
+                </a>
+                <div class="fp-tooltip right">Date</div>
+            </li>
+            <li>
+                <a href="#3rdPage" class="">
+                    <span></span>
+                </a>
+                <div class="fp-tooltip right">City</div>
+            </li>
+            <li>
+                <a href="#4thPage" class="">
+                    <span></span>
+                </a>
+                <div class="fp-tooltip right">Events</div>
+            </li>
+        </ul>
+    </div>
+
     <!-- Scripts for fullPage -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="./assets/jquery.slimscroll.js"></script>
     <script type="text/javascript" src="./assets/jquery.fullpage.js"></script>
     <script type="text/javascript" src="./assets/logic.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             $('#fullpage').fullpage({
-                sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', 'whitesmoke', '#ccddff'],
-                anchors: ['firstPage', 'secondPage', '3rdPage', '4thpage', 'lastPage'],
+                sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', 'whitesmoke'],
+                anchors: ['1stPage', '2ndPage', '3rdPage', 'lastPage'],
                 menu: '#menu',
+                scrollOverflow: true,
                 scrollingSpeed: 1000
             });
         });
     </script>
+
 </body>
 </html>

@@ -23,7 +23,8 @@
 }
 
 #section3 {
-	padding: 6% 0 0 0;
+	/*background-image: url("./images/insideDowntownAustinSkyline.jpg")*/
+	/*padding: 6% 0 0 0;*/
 }
 
 body {
@@ -39,4 +40,11 @@ h1 {
 h3 {
 	font-size: 44px;
 	color: white;
+}
+
+#fp-nav ul li a span {
+    background: white;
+    width: 8px;
+    height: 8px;
+    margin: -4px 0 0 -4px;
 }
