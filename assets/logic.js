@@ -13,7 +13,7 @@ $(document).ready(function() {
         console.log(moment($("#startDate").val()).format(properTimeFormat));
 
         //setting our Weather API 
-        var weatherURL = 'http://api.wunderground.com/api/d2d1cb57c6d0b52c/conditions/q/TX/' + city +'.json';
+        var weatherURL = 'https://api.wunderground.com/api/d2d1cb57c6d0b52c/conditions/q/TX/' + city +'.json';
 
         //Create variables to hold the address for the weather icons
         var weatherIcon = '';
