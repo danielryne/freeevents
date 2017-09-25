@@ -19,12 +19,12 @@
 }
 
 #section0 {
-	background-image: url(http://s4solutions.org/wp-content/uploads/2016/08/events-management-3.jpg);
-	/*background-image: url(http://eventfly.info/wp-content/uploads/2017/03/3442e85750214622f0dbad9d955e022e.jpg);*/
+	background-image: url("./images/eventCoverPhoto.jpg");
 }
 
 #section3 {
-	padding: 6% 0 0 0;
+	/*background-image: url("./images/insideDowntownAustinSkyline.jpg")*/
+	/*padding: 6% 0 0 0;*/
 }
 
 body {
@@ -40,4 +40,11 @@ h1 {
 h3 {
 	font-size: 44px;
 	color: white;
+}
+
+#fp-nav ul li a span {
+    background: white;
+    width: 10px;
+    height: 10px;
+    margin: -4px 0 0 -4px;
 }

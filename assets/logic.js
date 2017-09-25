@@ -11,25 +11,26 @@ $(document).ready(function() {
         startDate = moment($("#startDate").val()).format(properTimeFormat); // 2017-09-23T00:00:00-05:00
         endDate = moment($("#startDate").val()).add(1, "day").format(properTimeFormat); // day after the start day
         console.log(moment($("#startDate").val()).format(properTimeFormat));
+        var weatherResponse = [];
 
         //setting our Weather API 
-        var weatherURL = 'https://api.wunderground.com/api/d2d1cb57c6d0b52c/conditions/q/TX/' + city +'.json';
 
-        //Create variables to hold the address for the weather icons
-        var weatherIcon = '';
-        var weatherurl = '';
+        var weatherURL = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + ',us&appid=f30bf2c5f106f24501cfbef3435df08c';
+        var weatherDescription = '';
 
-        //Calling the weather icon for the city
+
+        //Calling the weather icon for the city and saving response to weatherResponse array
         $.ajax({
             url: weatherURL,
             method: "GET"
         }).done(function(response) {
 
-            // Logs the repsonse 
+            // Logs the response 
+            weatherResponse = response;
+            console.log("AJAX");
             console.log(response);
-
-            weatherIcon = response.current_observation.icon_url;
-            weatherurl = response.current_observation.forecast_url;
+            console.log("Array");
+            console.log(weatherResponse.list[0].weather[0].icon);
       
         })
 
@@ -45,7 +46,7 @@ $(document).ready(function() {
             method: "GET"
         }).done(function(response) {
 
-            // Logs the repsonse 
+            // Logs the response 
             console.log(response);
 
             //tells us the length of event objects 
@@ -61,6 +62,8 @@ $(document).ready(function() {
                 var urlEvent = response.events[i].url;
                 var timeEvent = response.events[i].start.local;
                 var descriptionEvent = response.events[i].description.text
+                var iconURL = weatherResponse.list[1].weather[0].icon; // need to find the event dates and compare them to the weatherdates and pull the icon of the weather date into iconURL
+                var weatherIcon = 'http://openweathermap.org/img/w/' + iconURL + '.png';
 
                 var date = moment(timeEvent).format("MMM Do");
                 var time = moment(timeEvent).format("h:mm a");
@@ -68,11 +71,19 @@ $(document).ready(function() {
                 $("#eventList").append(
                     '<tr><td>' + date + 
                     '</td><td>' + time +  
-                    '</td><td>' + '<a href="' + weatherurl + '" target="_blank"> <img src="' + weatherIcon + '"></a>' + 
+                    '</td><td>' + '<a href="' + weatherDescription + '" target="_blank"> <img src="' + weatherIcon + '"></a>' + 
                     '</td><td><a target="-blank" href="' + urlEvent + '" data-toggle="tooltip" title="' + descriptionEvent + '">' +
                     nameEvent +
                     '</a></td>')
             }           
         })
     };
+
+    // Click to move down screen
+    $("button").click(function() {
+        $('html,body').animate({
+            scrollTop: $("#section3").offset().top},
+            'slow');
+    });
+
 });
