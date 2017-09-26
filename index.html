@@ -3,6 +3,9 @@
 <head>
     <title>Full Page Trail</title>
     
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./assets/images/favicon.png"/>
+    
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -15,7 +18,7 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 </head>
 <body>
-    <!-- Sample HTMl -->
+    <!-- Main HTML -->
     <div id="fullpage">
         
         <!-- Section 1 -->
@@ -25,29 +28,31 @@
         </div>
         
         <!-- Section 2 -->
-        <div class="section text-center">
+        <div class="section text-center" id="section1">
             <form action="/action_page.php">
-                Select the date you want to go out: <br>
-                <input type="date" name="eventDate" id="startDate">
+                <h3>Select the date you want to go out:</h3>
+                <input type="date" name="eventDate" class="move" id="startDate">
             </form>
         </div>
         
         <!-- Section 3 -->
-        <div class="section text-center">
-            <p>Select the city you want to go out in:</p>
-                <button class="btn btn-md btn-warning" value="Austin" role="button">Austin</button>
-                <button class="btn btn-md btn-success" value="Dallas" role="button">Dallas</button>
-                <button class="btn btn-md btn-danger" value="Houston" role="button">Houson</button>
-                <button class="btn btn-md btn-info" value="SanAntonio" role="button">San Antonio</button>
+        <div class="section text-center" id="section2">
+            <h3>Select the city you want to go out in:</h3>
+                <button class="btn btn-lg btn-warning move" value="Austin" role="button">Austin</button>
+                <button class="btn btn-lg btn-success move" value="Dallas" role="button">Dallas</button>
+                <button class="btn btn-lg btn-danger move" value="Houston" role="button">Houson</button>
+                <button class="btn btn-lg btn-info move" value="SanAntonio" role="button">San Antonio</button>
         </div>
         
         <!-- Section 4 -->
-        <div class="section">
+        <div class="section" id="section3">
             <div class="card card-primary">
                 <div class="card-heading">
-                    <h3 class="card-header bg-primary text-white"><strong>Events</strong></h3>
+                    <h3 class="card-header bg-primary text-center text-white">
+                        <strong>Have Fun!</strong>
+                    </h3>
                 </div>
-                <div class="">
+                <div class="scrollDiv">
                     <table class="container card-body" style="height: 383px;"">
                         <thead>
                             <tr>
@@ -65,19 +70,52 @@
         
     </div>
 
+    <!-- Nav dots on right -->
+    <div id="fp-nav" class="right" style="margin-top: -33.5px;">
+        <ul>
+            <li>
+                <a href="#1stPage" class="">
+                    <span></span>
+                </a>
+                <div class="fp-tooltip right">Title</div>
+            </li>
+            <li>
+                <a href="#2ndPage" class="">
+                    <span></span>
+                </a>
+                <div class="fp-tooltip right">Date</div>
+            </li>
+            <li>
+                <a href="#3rdPage" class="">
+                    <span></span>
+                </a>
+                <div class="fp-tooltip right">City</div>
+            </li>
+            <li>
+                <a href="#4thPage" class="">
+                    <span></span>
+                </a>
+                <div class="fp-tooltip right">Events</div>
+            </li>
+        </ul>
+    </div>
+
     <!-- Scripts for fullPage -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="./assets/jquery.slimscroll.js"></script>
     <script type="text/javascript" src="./assets/jquery.fullpage.js"></script>
     <script type="text/javascript" src="./assets/logic.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             $('#fullpage').fullpage({
-                sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', 'whitesmoke', '#ccddff'],
-                anchors: ['firstPage', 'secondPage', '3rdPage', '4thpage', 'lastPage'],
+                sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', 'whitesmoke'],
+                anchors: ['1stPage', '2ndPage', '3rdPage', 'lastPage'],
                 menu: '#menu',
+                scrollOverflow: true,
                 scrollingSpeed: 1000
             });
         });
     </script>
+
 </body>
 </html>
