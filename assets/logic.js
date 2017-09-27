@@ -18,7 +18,7 @@ $(document).ready(function() {
 
         //setting our Weather API 
         
-        var weatherURL = 'http://api.openweathermap.org/data/2.5/forecast?q=' + city + ',us&appid=f30bf2c5f106f24501cfbef3435df08c';
+        var weatherURL = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + ',us&appid=f30bf2c5f106f24501cfbef3435df08c';
         var weatherDescription = '';
 
         //Calling the weather icon for the city and saving response to weatherResponse array
