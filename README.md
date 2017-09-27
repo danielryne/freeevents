@@ -1,6 +1,8 @@
 # Free Texas
 
-Your go to site for an easy to read free event lising
+Free Texas gives users a listing of free events in different cities around Texas. Just select the date, city and enjoy y'all! 
+
+The web program was created using HTML, CSS, Bootstrap, JavaScript, JQuery, AJAX, the Eventbrite API and Open Weather Map API. 
 
 https://danielryne.github.io/freetexas/
 
