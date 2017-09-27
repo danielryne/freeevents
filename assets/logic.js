@@ -15,6 +15,15 @@ $(document).ready(function() {
         var weatherResponse = [];
         var firstForcastTime;
         var now = moment();
+        var nameEvent;
+        var urlEvent;
+        var timeEvent; // Format YYYY-MM-DDTHH:mm:ss
+        var descriptionEvent;
+        var hoursSinceFirstForcast; // gets the hours from the first forcast time to the time of the event.
+        var weatherIndexOfEventTime; // gets the index for the weather array at the time of the event
+        var date;
+        var time;
+        var callArray = [];
 
         //setting our Weather API 
         
@@ -22,7 +31,7 @@ $(document).ready(function() {
         var weatherDescription = '';
 
         //Calling the weather icon for the city and saving response to weatherResponse array
-        $.ajax({
+        var weatherCall = $.ajax({
             url: weatherURL,
             method: "GET"
         }).done(function(response) {
@@ -44,7 +53,7 @@ $(document).ready(function() {
         var queryURL = "https://www.eventbriteapi.com/v3/events/search/?sort_by=date&categories=110,103&price=free&location.address=" + city + "&" + "start_date.range_start=" + startDate + "Z&start_date.range_end=" + endDate + "Z&token=" + APIKey;
 
         // AJAX call 
-        $.ajax({
+        var eventCall = $.ajax({
             url: queryURL,
             method: "GET"
         }).done(function(response) {
@@ -56,38 +65,52 @@ $(document).ready(function() {
             eventslength = response.events.length;
 
             $("#eventList").empty();
+            callArray = [];
 
             //For loop to print the events 
             for (var eventIndex = 0; eventIndex < eventslength; eventIndex++) {
 
                 // Variables for what we get
-                var nameEvent = response.events[eventIndex].name.text;
-                var urlEvent = response.events[eventIndex].url;
-                var timeEvent = response.events[eventIndex].start.local; // Format YYYY-MM-DDTHH:mm:ss
-                var descriptionEvent = response.events[eventIndex].description.text
-                var hoursSinceFirstForcast = moment(timeEvent, eventTimeFormat).diff(firstForcastTime, "hours"); // gets the hours from the first forcast time to the time of the event.
-                var weatherIndexOfEventTime = Math.floor(hoursSinceFirstForcast/3); // gets the index for the weather array at the time of the event
-                var iconURL = weatherResponse[weatherIndexOfEventTime].weather[0].icon; // gets the path to the correct icon
-                var weatherIcon = 'http://openweathermap.org/img/w/' + iconURL + '.png'; // puts the icon name into the hosted URL
+                
+                nameEvent = response.events[eventIndex].name.text;
+                urlEvent = response.events[eventIndex].url;
+                timeEvent = response.events[eventIndex].start.local; // Format YYYY-MM-DDTHH:mm:ss
+                descriptionEvent = response.events[eventIndex].description.text
+                hoursSinceFirstForcast = moment(timeEvent, eventTimeFormat).diff(firstForcastTime, "hours"); // gets the hours from the first forcast time to the time of the event.
+                weatherIndexOfEventTime = Math.floor(hoursSinceFirstForcast/3); // gets the index for the weather array at the time of the event
+                date = moment(timeEvent).format("MMM Do");
+                time = moment(timeEvent).format("h:mm a");
+                
+                callArray.push({
+                    nameEvent: nameEvent,
+                    urlEvent: urlEvent,
+                    timeEvent: timeEvent,
+                    descriptionEvent: descriptionEvent,
+                    hoursSinceFirstForcast: hoursSinceFirstForcast,
+                    weatherIndexOfEventTime: weatherIndexOfEventTime,
+                    date: date,
+                    time: time
+                });
 
-                // matching event date with forcast date
-                console.log("Time of Event: " + timeEvent);
-                console.log("Time of Weather: " + weatherResponse[weatherIndexOfEventTime].dt_txt);
-                console.log("Description of Weather: " + weatherResponse[weatherIndexOfEventTime].weather[0].description);
-                console.log(weatherResponse.length);
-
-                var date = moment(timeEvent).format("MMM Do");
-                var time = moment(timeEvent).format("h:mm a");
-
-                $("#eventList").append(
-                    '<tr><td>' + date + 
-                    '</td><td>' + time +  
-                    '</td><td>' + '<a href="' + weatherDescription + '" target="_blank"> <img src="' + weatherIcon + '"></a>' + 
-                    '</td><td><a target="-blank" href="' + urlEvent + '" data-toggle="tooltip" title="' + descriptionEvent + '">' +
-                    nameEvent +
-                    '</a></td>')
             }           
         })
+
+        $.when(weatherCall, eventCall)
+            .then(function (results) {
+                console.log("Both calls done");
+
+                for (var i = 0; i < callArray.length; i++) {
+                    var iconURL = weatherResponse[callArray[i].weatherIndexOfEventTime].weather[0].icon; // gets the path to the correct icon
+                    var weatherIcon = 'http://openweathermap.org/img/w/' + iconURL + '.png'; // puts the icon name into the hosted URL
+                    $("#eventList").append(
+                        '<tr><td>' + callArray[i].date + 
+                        '</td><td>' + callArray[i].time +  
+                        '</td><td>' + '<a href="' + weatherDescription + '" target="_blank"> <img src="' + weatherIcon + '"></a>' + 
+                        '</td><td><a target="-blank" href="' + callArray[i].urlEvent + '" data-toggle="tooltip" title="' + callArray[i].descriptionEvent + '">' +
+                        callArray[i].nameEvent +
+                        '</a></td>')
+                }
+            });
     };
 
     // Click to move down screen
