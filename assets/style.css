@@ -52,6 +52,13 @@ h3 {
 	color: white;
 }
 
+#attribution {
+	color: grey;
+	font-size: 20px; 
+	align-content: center;
+	vertical-align: bottom;
+}
+
 #fp-nav ul li a span {
     background: white;
     width: 10px;
