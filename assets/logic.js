@@ -7,11 +7,14 @@ $(document).ready(function() {
         console.log("Clicked");
 
         var city = $(this).val();
-        var properTimeFormat = "YYYY-MM-DDTHH:MM:ss";
-        startDate = moment($("#startDate").val()).format(properTimeFormat); // 2017-09-23T00:00:00-05:00
-        endDate = moment($("#startDate").val()).add(1, "day").format(properTimeFormat); // day after the start day
-        console.log(moment($("#startDate").val()).format(properTimeFormat));
+        var eventTimeFormat = "YYYY-MM-DDTHH:mm:ss";
+        var weatherTimeFormat = "YYYY-MM-DD HH:mm:ss"
+        startDate = moment($("#startDate").val()).format(eventTimeFormat); // 2017-09-23T00:00:00-05:00
+        endDate = moment($("#startDate").val()).add(1, "day").format(eventTimeFormat); // day after the start day
+        console.log(moment($("#startDate").val()).format(eventTimeFormat));
         var weatherResponse = [];
+        var firstForcastTime;
+        var now = moment();
 
         //setting our Weather API 
         
@@ -25,11 +28,12 @@ $(document).ready(function() {
         }).done(function(response) {
 
             // Logs the response 
-            weatherResponse = response;
+            weatherResponse = response.list;
+            firstForcastTime = moment(weatherResponse[0].dt_txt, weatherTimeFormat);
             console.log("AJAX");
             console.log(response);
             console.log("Array");
-            console.log(weatherResponse.list[0].weather[0].icon);
+            console.log(weatherResponse[0].weather[0].icon);
       
         })
 
@@ -54,15 +58,23 @@ $(document).ready(function() {
             $("#eventList").empty();
 
             //For loop to print the events 
-            for (var i = 0; i < eventslength; i++) {
+            for (var eventIndex = 0; eventIndex < eventslength; eventIndex++) {
 
                 // Variables for what we get
-                var nameEvent = response.events[i].name.text;
-                var urlEvent = response.events[i].url;
-                var timeEvent = response.events[i].start.local;
-                var descriptionEvent = response.events[i].description.text
-                var iconURL = weatherResponse.list[1].weather[0].icon; // need to find the event dates and compare them to the weatherdates and pull the icon of the weather date into iconURL
-                var weatherIcon = 'http://openweathermap.org/img/w/' + iconURL + '.png';
+                var nameEvent = response.events[eventIndex].name.text;
+                var urlEvent = response.events[eventIndex].url;
+                var timeEvent = response.events[eventIndex].start.local; // Format YYYY-MM-DDTHH:mm:ss
+                var descriptionEvent = response.events[eventIndex].description.text
+                var hoursSinceFirstForcast = moment(timeEvent, eventTimeFormat).diff(firstForcastTime, "hours"); // gets the hours from the first forcast time to the time of the event.
+                var weatherIndexOfEventTime = Math.floor(hoursSinceFirstForcast/3); // gets the index for the weather array at the time of the event
+                var iconURL = weatherResponse[weatherIndexOfEventTime].weather[0].icon; // gets the path to the correct icon
+                var weatherIcon = 'http://openweathermap.org/img/w/' + iconURL + '.png'; // puts the icon name into the hosted URL
+
+                // matching event date with forcast date
+                console.log("Time of Event: " + timeEvent);
+                console.log("Time of Weather: " + weatherResponse[weatherIndexOfEventTime].dt_txt);
+                console.log("Description of Weather: " + weatherResponse[weatherIndexOfEventTime].weather[0].description);
+                console.log(weatherResponse.length);
 
                 var date = moment(timeEvent).format("MMM Do");
                 var time = moment(timeEvent).format("h:mm a");
