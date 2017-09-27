@@ -13,13 +13,13 @@ $(document).ready(function() {
         endDate = moment($("#startDate").val()).add(1, "day").format(eventTimeFormat); // day after the start day
         console.log(moment($("#startDate").val()).format(eventTimeFormat));
         var weatherResponse = [];
-        var firstForcastTime;
+        var firstForecastTime;
         var now = moment();
         var nameEvent;
         var urlEvent;
         var timeEvent; // Format YYYY-MM-DDTHH:mm:ss
         var descriptionEvent;
-        var hoursSinceFirstForcast; // gets the hours from the first forcast time to the time of the event.
+        var hoursSinceFirstForecast; // gets the hours from the first forecast time to the time of the event.
         var weatherIndexOfEventTime; // gets the index for the weather array at the time of the event
         var date;
         var time;
@@ -38,7 +38,7 @@ $(document).ready(function() {
 
             // Logs the response 
             weatherResponse = response.list;
-            firstForcastTime = moment(weatherResponse[0].dt_txt, weatherTimeFormat);
+            firstForecastTime = moment(weatherResponse[0].dt_txt, weatherTimeFormat);
             console.log("AJAX");
             console.log(response);
             console.log("Array");
@@ -70,23 +70,23 @@ $(document).ready(function() {
             //For loop to print the events 
             for (var eventIndex = 0; eventIndex < eventslength; eventIndex++) {
 
-                // Variables for what we get
-                
+                // Variables for what we get                
                 nameEvent = response.events[eventIndex].name.text;
                 urlEvent = response.events[eventIndex].url;
                 timeEvent = response.events[eventIndex].start.local; // Format YYYY-MM-DDTHH:mm:ss
                 descriptionEvent = response.events[eventIndex].description.text
-                hoursSinceFirstForcast = moment(timeEvent, eventTimeFormat).diff(firstForcastTime, "hours"); // gets the hours from the first forcast time to the time of the event.
-                weatherIndexOfEventTime = Math.floor(hoursSinceFirstForcast/3); // gets the index for the weather array at the time of the event
+                hoursSinceFirstForecast = moment(timeEvent, eventTimeFormat).diff(firstForecastTime, "hours"); // gets the hours from the first forecast time to the time of the event.
+                weatherIndexOfEventTime = Math.floor(hoursSinceFirstForecast/3); // gets the index for the weather array at the time of the event
                 date = moment(timeEvent).format("MMM Do");
                 time = moment(timeEvent).format("h:mm a");
                 
+                // push this object into the array
                 callArray.push({
                     nameEvent: nameEvent,
                     urlEvent: urlEvent,
                     timeEvent: timeEvent,
                     descriptionEvent: descriptionEvent,
-                    hoursSinceFirstForcast: hoursSinceFirstForcast,
+                    hoursSinceFirstForecast: hoursSinceFirstForecast,
                     weatherIndexOfEventTime: weatherIndexOfEventTime,
                     date: date,
                     time: time
@@ -95,10 +95,12 @@ $(document).ready(function() {
             }           
         })
 
+        // this is called when all the ajax has responded
         $.when(weatherCall, eventCall)
             .then(function (results) {
                 console.log("Both calls done");
 
+                // for each item in the array of variables to be rendered on the events list
                 for (var i = 0; i < callArray.length; i++) {
                     var iconURL = weatherResponse[callArray[i].weatherIndexOfEventTime].weather[0].icon; // gets the path to the correct icon
                     var weatherIcon = 'http://openweathermap.org/img/w/' + iconURL + '.png'; // puts the icon name into the hosted URL
