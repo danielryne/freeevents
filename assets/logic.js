@@ -14,6 +14,7 @@ $(document).ready(function() {
         console.log(moment($("#startDate").val()).format(eventTimeFormat));
         var weatherResponse = [];
         var firstForecastTime;
+        var lastForecastTime;
         var now = moment();
         var nameEvent;
         var urlEvent;
@@ -39,11 +40,13 @@ $(document).ready(function() {
             // Logs the response 
             weatherResponse = response.list;
             firstForecastTime = moment(weatherResponse[0].dt_txt, weatherTimeFormat);
+            lastForecastTime = moment(weatherResponse[weatherResponse.length - 1].dt_txt, weatherTimeFormat);
             console.log("AJAX");
             console.log(response);
             console.log("Array");
             console.log(weatherResponse[0].weather[0].icon);
-      
+            console.log("lastForecastTime: " + moment(lastForecastTime).format(weatherTimeFormat));
+            // console.log("firstForecastTime: " + moment(firstForecastTime).format(weatherTimeFormat));
         })
 
         // API key for EventBrite
@@ -79,6 +82,8 @@ $(document).ready(function() {
                 weatherIndexOfEventTime = Math.floor(hoursSinceFirstForecast/3); // gets the index for the weather array at the time of the event
                 date = moment(timeEvent).format("MMM Do");
                 time = moment(timeEvent).format("h:mm a");
+
+                console.log("lastForecastTime: " + moment(timeEvent).diff(lastForecastTime, "hours"));
                 
                 // push this object into the array
                 callArray.push({
@@ -104,13 +109,24 @@ $(document).ready(function() {
                 for (var i = 0; i < callArray.length; i++) {
                     var iconURL = weatherResponse[callArray[i].weatherIndexOfEventTime].weather[0].icon; // gets the path to the correct icon
                     var weatherIcon = 'http://openweathermap.org/img/w/' + iconURL + '.png'; // puts the icon name into the hosted URL
-                    $("#eventList").append(
-                        '<tr><td>' + callArray[i].date + 
-                        '</td><td>' + callArray[i].time +  
-                        '</td><td>' + '<a href="' + weatherDescription + '" target="_blank"> <img src="' + weatherIcon + '"></a>' + 
-                        '</td><td><a target="-blank" href="' + callArray[i].urlEvent + '" data-toggle="tooltip" title="' + callArray[i].descriptionEvent + '">' +
-                        callArray[i].nameEvent +
-                        '</a></td>')
+
+                    if (moment(callArray[i].timeEvent).diff(lastForecastTime, "hours") > 0) {
+                        $("#eventList").append(
+                            '<tr><td>' + callArray[i].date + 
+                            '</td><td>' + callArray[i].time +  
+                            '</td><td>' + '<a href="' + weatherDescription + '" target="_blank"> <span>None Available</span></a>' + 
+                            '</td><td><a target="-blank" href="' + callArray[i].urlEvent + '" data-toggle="tooltip" title="' + callArray[i].descriptionEvent + '">' +
+                            callArray[i].nameEvent +
+                            '</a></td>')
+                    }else {
+                        $("#eventList").append(
+                            '<tr><td>' + callArray[i].date + 
+                            '</td><td>' + callArray[i].time +  
+                            '</td><td>' + '<a href="' + weatherDescription + '" target="_blank"> <img src="' + weatherIcon + '"></a>' + 
+                            '</td><td><a target="-blank" href="' + callArray[i].urlEvent + '" data-toggle="tooltip" title="' + callArray[i].descriptionEvent + '">' +
+                            callArray[i].nameEvent +
+                            '</a></td>')
+                    }
                 }
             });
     };
