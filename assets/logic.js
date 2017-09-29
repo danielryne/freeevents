@@ -104,29 +104,38 @@ $(document).ready(function() {
         $.when(weatherCall, eventCall)
             .then(function (results) {
                 console.log("Both calls done");
+                console.log("Array length: " + callArray.length)
 
-                // for each item in the array of variables to be rendered on the events list
-                for (var i = 0; i < callArray.length; i++) {
-                    var iconURL = weatherResponse[callArray[i].weatherIndexOfEventTime].weather[0].icon; // gets the path to the correct icon
-                    var weatherIcon = 'http://openweathermap.org/img/w/' + iconURL + '.png'; // puts the icon name into the hosted URL
+                if (callArray.length > 0) {
+                    // for each item in the array of variables to be rendered on the events list
+                    for (var i = 0; i < callArray.length; i++) {
+                        var iconURL = weatherResponse[callArray[i].weatherIndexOfEventTime].weather[0].icon; // gets the path to the correct icon
+                        var weatherIcon = 'http://openweathermap.org/img/w/' + iconURL + '.png'; // puts the icon name into the hosted URL
 
-                    if (moment(callArray[i].timeEvent).diff(lastForecastTime, "hours") > 0) {
-                        $("#eventList").append(
-                            '<tr><td>' + callArray[i].date + 
-                            '</td><td>' + callArray[i].time +  
-                            '</td><td>' + '<a href="' + weatherDescription + '" target="_blank"> <span>None Available</span></a>' + 
-                            '</td><td><a target="-blank" href="' + callArray[i].urlEvent + '" data-toggle="tooltip" title="' + callArray[i].descriptionEvent + '">' +
-                            callArray[i].nameEvent +
-                            '</a></td>')
-                    }else {
-                        $("#eventList").append(
-                            '<tr><td>' + callArray[i].date + 
-                            '</td><td>' + callArray[i].time +  
-                            '</td><td>' + '<a href="' + weatherDescription + '" target="_blank"> <img src="' + weatherIcon + '"></a>' + 
-                            '</td><td><a target="-blank" href="' + callArray[i].urlEvent + '" data-toggle="tooltip" title="' + callArray[i].descriptionEvent + '">' +
-                            callArray[i].nameEvent +
-                            '</a></td>')
+                        if (moment(callArray[i].timeEvent).diff(lastForecastTime, "hours") > 0) {
+                            $("#eventList").append(
+                                '<tr><td>' + callArray[i].date + 
+                                '</td><td>' + callArray[i].time +  
+                                '</td><td>' + '<a href="' + weatherDescription + '" target="_blank"> <span>None Available</span></a>' + 
+                                '</td><td><a target="-blank" href="' + callArray[i].urlEvent + '" data-toggle="tooltip" title="' + callArray[i].descriptionEvent + '">' +
+                                callArray[i].nameEvent +
+                                '</a></td>')
+                        }else {
+                            $("#eventList").append(
+                                '<tr><td>' + callArray[i].date + 
+                                '</td><td>' + callArray[i].time +  
+                                '</td><td>' + '<a href="' + weatherDescription + '" target="_blank"> <img src="' + weatherIcon + '"></a>' + 
+                                '</td><td><a target="-blank" href="' + callArray[i].urlEvent + '" data-toggle="tooltip" title="' + callArray[i].descriptionEvent + '">' +
+                                callArray[i].nameEvent +
+                                '</a></td>')
+                        }
                     }
+                }else {
+                    console.log("No events found");
+                    $("#eventList").append(
+                        '<strong>No Events Found<strong>'
+                    )
+
                 }
             });
     };
