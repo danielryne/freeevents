@@ -107,20 +107,24 @@ $(document).ready(function() {
                 console.log("Array length: " + callArray.length)
 
                 if (callArray.length > 0) {
+                    console.log("Events found");
                     // for each item in the array of variables to be rendered on the events list
                     for (var i = 0; i < callArray.length; i++) {
-                        var iconURL = weatherResponse[callArray[i].weatherIndexOfEventTime].weather[0].icon; // gets the path to the correct icon
                         var weatherIcon = 'http://openweathermap.org/img/w/' + iconURL + '.png'; // puts the icon name into the hosted URL
 
                         if (moment(callArray[i].timeEvent).diff(lastForecastTime, "hours") > 0) {
+                            console.log("Outside of weather forecast");
                             $("#eventList").append(
                                 '<tr><td>' + callArray[i].date + 
                                 '</td><td>' + callArray[i].time +  
-                                '</td><td>' + '<a href="' + weatherDescription + '" target="_blank"> <span>None Available</span></a>' + 
+                                '</td><td>' + '<span>None Available</span>' + 
                                 '</td><td><a target="-blank" href="' + callArray[i].urlEvent + '" data-toggle="tooltip" title="' + callArray[i].descriptionEvent + '">' +
                                 callArray[i].nameEvent +
                                 '</a></td>')
                         }else {
+                            console.log("Inside weatther forecst");
+                            var iconURL = weatherResponse[callArray[i].weatherIndexOfEventTime].weather[0].icon; // gets the path to the correct icon
+
                             $("#eventList").append(
                                 '<tr><td>' + callArray[i].date + 
                                 '</td><td>' + callArray[i].time +  
