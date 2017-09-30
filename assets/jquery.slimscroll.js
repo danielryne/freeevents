@@ -477,6 +477,6 @@ $(function(){
     $('.scrollDiv').slimScroll({
         position: 'left',
         wheelStep: 5,
-        height: '500px'
+        height: '600px'
     });
 });
