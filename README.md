@@ -5,10 +5,10 @@ Free Texas gives users a listing of free events in different cities around Texas
 The web program was created using HTML, CSS, Bootstrap, JavaScript, JQuery, AJAX, the Eventbrite API and Open Weather Map API. 
 
 Find our website here:
-https://danielryne.github.io/freetexas/
+http://bit.ly/freetexasapp
 
 Download our Chrome Extension here:
-http://bit.ly/2fA91ya
+http://bit.ly/freetexaschrome
 
 Developed By:
 
