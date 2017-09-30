@@ -124,6 +124,7 @@ $(document).ready(function() {
                         }else {
                             console.log("Inside weatther forecst");
                             var iconURL = weatherResponse[callArray[i].weatherIndexOfEventTime].weather[0].icon; // gets the path to the correct icon
+                            var weatherIcon = 'http://openweathermap.org/img/w/' + iconURL + '.png'; // puts the icon name into the hosted URL
 
                             $("#eventList").append(
                                 '<tr><td>' + callArray[i].date + 
