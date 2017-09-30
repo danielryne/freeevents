@@ -12,8 +12,8 @@ http://bit.ly/2fA91ya
 
 Developed By:
 
-[Daniel Ryne Lucio](https://github.com/danielryne)
-[Elliott Wendel](https://github.com/ewendel88)
+[Daniel Ryne Lucio](https://github.com/danielryne),
+[Elliott Wendel](https://github.com/ewendel88), and 
 [Forrest G. Eastland](https://github.com/eastman81)
 
 ![](http://akns-images.eonline.com/eol_images/Entire_Site/201562/rs_500x279-150702133606-tumblr_inline_miazfeIb1u1qz4rgp.gif)
