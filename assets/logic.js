@@ -145,11 +145,7 @@ $(document).ready(function() {
             });
     };
 
-    // Click to move down screen
-    $("button").click(function() {
-        $('html,body').animate({
-            scrollTop: $("#section3").offset().top},
-            'slow');
-    });
-
 });
+
+
+
