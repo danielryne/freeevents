@@ -22,6 +22,11 @@
 	background-image: url("./images/eventCoverPhoto.jpg");
 }
 
+/*maybe add this in after editing it*/
+/*#section2 {
+	background-image: url("./images/atxSkyline.png");
+}*/
+
 #section1 {
 	width: 100%;
     height: 1000px;
@@ -53,10 +58,17 @@ h3 {
 }
 
 #attribution {
-	color: grey;
-	font-size: 20px; 
-	align-content: center;
+	color: white;
+	font-size: 18px; 
 	vertical-align: bottom;
+}
+
+#attributionText {
+	color: white;
+}
+
+#attributionText:hover {
+	color: #79ADDC;
 }
 
 #fp-nav ul li a span {
@@ -72,8 +84,12 @@ a {
 
 a:hover,
 a:focus {
-  color: white;
+  color: #79ADDC;
   text-decoration: none;
+}
+
+th, td {
+	color: white;
 }
 
 #infoMenu {
@@ -87,6 +103,15 @@ a:focus {
     list-style-type: none;
 }
 
+#infoText {
+	color: white;
+}
+
 #gif {
 	margin-left: 27.5px;
+}
+
+.bg-primary {
+    color: #fff;
+    background-color: #79ADDC;
 }

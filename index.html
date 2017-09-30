@@ -64,10 +64,11 @@
                         </thead>
                         <tbody id="eventList"></tbody>
                     </table>
-                    <div id="attribution">
+                    <br>
+                    <div class="text-center" id="attribution">
                         Powered by: 
-                        <a href="https://www.eventbrite.com/">Eventbrite</a> &amp; 
-                        <a href="https://openweathermap.org/">Open Weather Map</a>
+                        <a href="https://www.eventbrite.com/" target="_blank" id="attributionText">Eventbrite</a> &amp; 
+                        <a href="https://openweathermap.org/" target="_blank" id="attributionText">Open Weather Map</a>
                     </div>
                 </div>
             </div>
@@ -78,7 +79,7 @@
     <!-- Lower contact tab -->
     <div id="infoMenu">
         <ul>
-            <li><a href="./contact.html" target="_blank">Contact Us</a></li>
+            <li><a href="./contact.html" target="_blank" id="infoText">Contact Us</a></li>
         </ul>
     </div>
 
@@ -120,7 +121,7 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $('#fullpage').fullpage({
-                sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', 'whitesmoke'],
+                sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', '#F1B46A'],
                 anchors: ['1stPage', '2ndPage', '3rdPage', 'lastPage'],
                 menu: '#menu',
                 scrollOverflow: true,
