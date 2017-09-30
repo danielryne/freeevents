@@ -35,16 +35,16 @@ $(document).ready(function() {
 
             switch(city) {
                 case "Austin":
-                    var weatherDescription = 'https://openweathermap.org/city/4671654';
+                    var weatherLinkURL = 'https://openweathermap.org/city/4671654';
                     break;
                 case "Dallas":
-                    var weatherDescription = 'https://openweathermap.org/city/4684888';
+                    var weatherLinkURL = 'https://openweathermap.org/city/4684888';
                     break;
                 case "Houston":
-                    var weatherDescription = 'https://openweathermap.org/city/4699066';
+                    var weatherLinkURL = 'https://openweathermap.org/city/4699066';
                     break;
                 case "San Antonio":
-                    var weatherDescription = 'https://openweathermap.org/city/4726206';
+                    var weatherLinkURL = 'https://openweathermap.org/city/4726206';
                     break;
             }
 
@@ -142,11 +142,12 @@ $(document).ready(function() {
                                 console.log("Inside weather forecst");
                                 var iconURL = weatherResponse[callArray[i].weatherIndexOfEventTime].weather[0].icon; // gets the path to the correct icon
                                 var weatherIcon = 'http://openweathermap.org/img/w/' + iconURL + '.png'; // puts the icon name into the hosted URL
+                                var weatherDescription = weatherResponse[callArray[i].weatherIndexOfEventTime].weather[0].description
 
                                 $("#eventList").append(
                                     '<tr><td>' + callArray[i].date +
                                     '</td><td>' + callArray[i].time +
-                                    '</td><td>' + '<a href="' + weatherDescription + '" target="_blank"> <img src="' + weatherIcon + '"></a>' +
+                                    '</td><td>' + '<a href="' + weatherLinkURL + '" target="_blank"> <img src="' + weatherIcon + '" data-toggle="tooltip" title="' + weatherDescription + '"></a>' +
                                     '</td><td><a target="-blank" href="' + callArray[i].urlEvent + '" data-toggle="tooltip" title="' + callArray[i].descriptionEvent + '">' +
                                     callArray[i].nameEvent +
                                     '</a></td>')
