@@ -1,5 +1,5 @@
-## Site no longer working : Eventbrite Searching Events by Location - Deprecated
-## Access to the Eventbrite Event Search API will be shut down at 11:59 pm PT on December 12th, 2019.
+### Site no longer working : Eventbrite Searching Events by Location - Deprecated
+### Access to the Eventbrite Event Search API will be shut down at 11:59 pm PT on December 12th, 2019.
 
 -------------------------------------------------------------
 
